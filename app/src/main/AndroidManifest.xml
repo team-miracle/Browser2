@@ -6,7 +6,7 @@
 
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.chromium.webview_shell"
+    package="org.miracle.browser"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -92,7 +92,7 @@
         <uses-library android:name="android.test.runner" />
     </application>
 
-    <instrumentation android:name="org.chromium.webview_shell.WebViewLayoutTestRunner"
-        android:targetPackage="org.chromium.webview_shell"
-        android:label="Tests for org.chromium.webview_shell" />
+    <instrumentation android:name="org.miracle.browser.WebViewLayoutTestRunner"
+        android:targetPackage="org.miracle.browser"
+        android:label="Tests for org.miracle.browser" />
 </manifest>
