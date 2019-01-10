@@ -5,6 +5,7 @@
 package org.miracle.browser;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -210,6 +211,8 @@ public class WebViewBrowserActivity extends Activity implements PopupMenu.OnMenu
                 setUrlBarText(url);
             }
 
+            //Android 7.0 N 이상에서만 작동하도록
+            @TargetApi(Build.VERSION_CODES.N)
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 String url = request.getUrl().toString();
@@ -256,6 +259,8 @@ public class WebViewBrowserActivity extends Activity implements PopupMenu.OnMenu
 
     // WebKit permissions which can be granted because either they have no associated Android
     // permission or the associated Android permission has been granted
+    // Android 6.0 M 이상에서만 작동
+    @TargetApi(Build.VERSION_CODES.M)
     private boolean canGrant(String webkitPermission) {
         String androidPermission = sPermissions.get(webkitPermission);
         if (androidPermission == NO_ANDROID_PERMISSION) {
@@ -264,6 +269,8 @@ public class WebViewBrowserActivity extends Activity implements PopupMenu.OnMenu
         return PackageManager.PERMISSION_GRANTED == checkSelfPermission(androidPermission);
     }
 
+    // Android 6.0 M 이상에서만 작동하도록
+    @TargetApi(Build.VERSION_CODES.M)
     private void requestPermissionsForPage(PermissionRequest request) {
         // Deny any unrecognized permissions.
         for (String webkitPermission : request.getResources()) {
